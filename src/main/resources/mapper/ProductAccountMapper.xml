@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyx.warehouse.mapper.ProductAccountMapper">
+
+    <resultMap id="BaseResultMap" type="com.lyx.warehouse.model.entity.ProductAccount">
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="storeId" column="store_id" jdbcType="BIGINT"/>
+        <result property="productId" column="product_id" jdbcType="BIGINT"/>
+        <result property="operationType" column="operation_type" jdbcType="INTEGER"/>
+        <result property="operationNum" column="operation_num" jdbcType="INTEGER"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id
+        ,store_id,product_id,
+        operation_type,operation_num,create_time
+    </sql>
+    <select id="productAccountQuery" resultType="com.lyx.warehouse.model.vo.ProductAccountVo">
+        SELECT *
+        FROM product_account
+        WHERE product_id = #{productId}
+          AND store_id IN (SELECT store_id FROM `store_product` WHERE create_time >= #{createTime})
+    </select>
+</mapper>

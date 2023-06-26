@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyx.warehouse.mapper.ProductMapper">
+
+    <resultMap id="BaseResultMap" type="com.lyx.warehouse.model.entity.Product">
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="spec" column="spec" jdbcType="VARCHAR"/>
+        <result property="specType" column="spec_type" jdbcType="INTEGER"/>
+        <result property="price" column="price" jdbcType="INTEGER"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <result property="isDelete" column="is_delete" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,name,spec,
+        spec_type,price,create_time,
+        update_time,is_delete
+    </sql>
+    <select id="productInfoQuery" resultType="com.lyx.warehouse.model.vo.ProductInfo">
+        SELECT SUM(product_num) AS num, SUM(price * product_num) AS allPrice
+        FROM product
+                 INNER JOIN store_product ON product.id = store_product.product_id
+        WHERE product.id = #{id};
+    </select>
+</mapper>

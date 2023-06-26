@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyx.warehouse.mapper.StoreProductMapper">
+
+    <resultMap id="BaseResultMap" type="com.lyx.warehouse.model.entity.StoreProduct">
+            <id property="storeId" column="store_id" jdbcType="BIGINT"/>
+            <id property="productId" column="product_id" jdbcType="BIGINT"/>
+            <result property="productNum" column="product_num" jdbcType="INTEGER"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+            <result property="status" column="status" jdbcType="INTEGER"/>
+            <result property="isDelete" column="is_delete" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        store_id,product_id,product_num,
+        create_time,update_time,status,
+        is_delete
+    </sql>
+</mapper>

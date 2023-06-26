@@ -1,0 +1,11 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: warehouse-ms-backend
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/warehouse-ms-backend?characterEncoding=utf-8&useSSL=false
+
