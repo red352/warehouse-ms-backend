@@ -39,7 +39,7 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product>
     @Override
     public Result<ProductInfo> productInfoQuery(Long id) {
         ProductInfo productInfo = baseMapper.productInfoQuery(id);
-        return null;
+        return Result.success(productInfo);
     }
 
     private PageResult<ProductVo> copyToVoPageResult(Page<Product> productPage) {

@@ -16,13 +16,11 @@ public class StoreProduct implements Serializable {
     /**
      * 门店id
      */
-    @TableId(value = "store_id")
     private Long storeId;
 
     /**
      * 商品id
      */
-    @TableId(value = "product_id")
     private Long productId;
 
     /**

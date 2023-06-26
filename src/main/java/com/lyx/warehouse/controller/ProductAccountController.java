@@ -1,5 +1,6 @@
 package com.lyx.warehouse.controller;
 
+import com.lyx.warehouse.common.aop.ProductOut;
 import com.lyx.warehouse.common.result.PageResult;
 import com.lyx.warehouse.common.result.Result;
 import com.lyx.warehouse.model.dto.productAccount.ProductAccountAdd;
@@ -32,6 +33,7 @@ public class ProductAccountController {
      * @return
      */
     @PostMapping("/out")
+    @ProductOut
     public Result<?> productOut(@RequestBody @Valid ProductAccountAdd productAccountAdd) {
         return productAccountService.productOut(productAccountAdd);
     }

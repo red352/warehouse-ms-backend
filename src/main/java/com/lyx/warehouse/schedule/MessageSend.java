@@ -8,6 +8,7 @@ import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
@@ -16,9 +17,10 @@ import java.util.concurrent.TimeUnit;
  * @createTime 2023/6/26 13:18
  */
 @Component
-@AllArgsConstructor
 public class MessageSend {
+    @Resource
     private RedisTemplate<String, Long> redisTemplate;
+    @Resource
     private MessgaeService messgaeService;
 
     @Scheduled(fixedRate = 10, timeUnit = TimeUnit.SECONDS)

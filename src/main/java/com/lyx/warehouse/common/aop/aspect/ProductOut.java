@@ -7,9 +7,11 @@ import lombok.AllArgsConstructor;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 
@@ -21,9 +23,10 @@ import static com.lyx.warehouse.model.redis.RedisKey.MESSAGE_SEND_KEY;
  */
 @Aspect
 @Component
-@AllArgsConstructor
 public class ProductOut {
+    @Autowired
     private MessgaeService messgaeService;
+    @Resource
     private RedisTemplate<String, Long> redisTemplate;
 
     @Around("@annotation(com.lyx.warehouse.common.aop.ProductOut)")

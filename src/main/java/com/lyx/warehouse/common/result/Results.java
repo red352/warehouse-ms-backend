@@ -13,7 +13,8 @@ public enum Results {
      */
     SUCCESS(0,"请求成功"),
     FAIL(1,"请求失败"),
-    SYSTEM_ERROR(100,"系统错误");
+    SYSTEM_ERROR(100,"系统错误"),
+    VAIL_ERROR(2,"参数校验失败");
 
     private final Integer code;
     private final String msg;

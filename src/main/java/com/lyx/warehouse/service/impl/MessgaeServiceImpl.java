@@ -10,10 +10,12 @@ import com.lyx.warehouse.model.entity.Messgae;
 import com.lyx.warehouse.model.redis.RedisKey;
 import com.lyx.warehouse.service.MessgaeService;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 import java.util.Set;
 
@@ -23,10 +25,10 @@ import java.util.Set;
  * @createDate 2023-06-26 12:46:05
  */
 @Service
-@AllArgsConstructor
 public class MessgaeServiceImpl extends ServiceImpl<MessgaeMapper, Messgae>
         implements MessgaeService {
 
+    @Resource
     private RedisTemplate<String, Long> redisTemplate;
 
 

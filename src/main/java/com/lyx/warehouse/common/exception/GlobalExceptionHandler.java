@@ -2,6 +2,7 @@ package com.lyx.warehouse.common.exception;
 
 import com.lyx.warehouse.common.result.Result;
 import com.lyx.warehouse.common.result.Results;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -15,5 +16,11 @@ public class GlobalExceptionHandler {
     public Result<?> globalError(Exception e) {
         e.printStackTrace();
         return Result.fail(Results.SYSTEM_ERROR);
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public Result<?> validError(MethodArgumentNotValidException e){
+        e.printStackTrace();
+        return Result.fail(Results.VAIL_ERROR);
     }
 }

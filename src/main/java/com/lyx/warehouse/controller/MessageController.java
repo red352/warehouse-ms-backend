@@ -24,11 +24,16 @@ public class MessageController {
      * @param id
      * @return
      */
-    @GetMapping
+    @GetMapping("/read")
     public Result<?> doReadMessage(Long id){
         return messgaeService.doReadMessage(id);
     }
 
+    /**
+     * 分页查询消息
+     * @param messageQuery
+     * @return
+     */
     @PostMapping("/get/page")
     public Result<PageResult<Messgae>> messagePageQuery(@RequestBody MessageQuery messageQuery){
         return messgaeService.messagePageQuery(messageQuery);
